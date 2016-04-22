@@ -9,14 +9,25 @@ namespace SearchableModListForm
 	static class Program
 	{
 		/// <summary>
-		/// The main entry point for the application.
+		/// The main entry point for example application.
 		/// </summary>
 		[STAThread]
 		static void Main ()
 		{
+			List<Mod> modList = new List<Mod> ();
+			for (int i = 0; i < 15; i++)
+			{
+				Mod m = new Mod ();
+				m.modID = i;
+				m.modVersion = i - 0.5f;
+				m.modName = i + " mod";
+				m.modAuthor += ("Author " + i);
+				modList.Add (m);
+			}
 			Application.EnableVisualStyles ();
 			Application.SetCompatibleTextRenderingDefault (false);
-			Application.Run (new Form1 ());
+			SearchableModListForm form = new SearchableModListForm (modList);
+			Application.Run (form);
 		}
 	}
 }
